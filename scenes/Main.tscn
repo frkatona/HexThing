@@ -1,0 +1,358 @@
+[gd_scene format=3 uid="uid://c2n46y1ptddrr"]
+
+[ext_resource type="PackedScene" uid="uid://cocyxpikdmmsr" path="res://scenes/hexGem.tscn" id="1_elqb8"]
+[ext_resource type="Script" uid="uid://b363hu1xesbk3" path="res://scripts/main.gd" id="2_main"]
+[ext_resource type="AudioStream" uid="uid://bw5aajkhpq1oc" path="res://assets/audio/music/mainBGM.wav" id="3_0bbpv"]
+[ext_resource type="Script" uid="uid://cs7xdg12nx42v" path="res://scripts/pause_menu.gd" id="4_pause_menu"]
+[ext_resource type="AudioStream" uid="uid://bnw4wys2x0t3i" path="res://assets/audio/sfx/press-pause.mp3" id="5_pause_sfx"]
+[ext_resource type="AudioStream" uid="uid://b01ajv3p4kd5s" path="res://assets/audio/sfx/press-start.mp3" id="6_continue_sfx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
+ground_bottom_color = Color(0.07154573, 0.06288995, 0.1358994, 1)
+
+[sub_resource type="Sky" id="Sky_0o143"]
+sky_material = SubResource("ProceduralSkyMaterial_80iay")
+
+[sub_resource type="Environment" id="Environment_h45xw"]
+background_mode = 2
+sky = SubResource("Sky_0o143")
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_hud"]
+bg_color = Color(0.00784314, 0.0470588, 0.0509804, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.223529, 0.784314, 0.580392, 0.55)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_pause_panel"]
+bg_color = Color(0.00784314, 0.0470588, 0.0509804, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.223529, 0.784314, 0.580392, 0.65)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_pause_button"]
+bg_color = Color(0.0196078, 0.156863, 0.129412, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.223529, 0.784314, 0.580392, 0.4)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_pause_button_hover"]
+bg_color = Color(0.0588235, 0.513726, 0.356863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.431373, 1, 0.733333, 0.9)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[node name="Node3D" type="Node3D" unique_id=2032049068]
+script = ExtResource("2_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=600517418]
+environment = SubResource("Environment_h45xw")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=941998993]
+layer = 10
+
+[node name="Margin" type="MarginContainer" parent="HUD" unique_id=406802961]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 84.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+
+[node name="Stats" type="HBoxContainer" parent="HUD/Margin" unique_id=472511633]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LevelPanel" type="PanelContainer" parent="HUD/Margin/Stats" unique_id=6562775]
+custom_minimum_size = Vector2(180, 56)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Margin/Stats/LevelPanel" unique_id=1941173372]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 7
+
+[node name="Content" type="VBoxContainer" parent="HUD/Margin/Stats/LevelPanel/Margin" unique_id=1437739037]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Caption" type="Label" parent="HUD/Margin/Stats/LevelPanel/Margin/Content" unique_id=560797854]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.431373, 0.952941, 0.713726, 1)
+theme_override_font_sizes/font_size = 10
+text = "CURRENT LEVEL  [A]"
+
+[node name="LevelLabel" type="Label" parent="HUD/Margin/Stats/LevelPanel/Margin/Content" unique_id=501486678]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
+theme_override_font_sizes/font_size = 22
+text = "1"
+
+[node name="Spacer" type="Control" parent="HUD/Margin/Stats" unique_id=442200360]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ScorePanel" type="PanelContainer" parent="HUD/Margin/Stats" unique_id=1853880452]
+custom_minimum_size = Vector2(180, 56)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Margin/Stats/ScorePanel" unique_id=1348325837]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 7
+
+[node name="Content" type="VBoxContainer" parent="HUD/Margin/Stats/ScorePanel/Margin" unique_id=246725313]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Caption" type="Label" parent="HUD/Margin/Stats/ScorePanel/Margin/Content" unique_id=52482332]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.431373, 0.952941, 0.713726, 1)
+theme_override_font_sizes/font_size = 10
+text = "SCORE  [S]"
+horizontal_alignment = 2
+
+[node name="ScoreLabel" type="Label" parent="HUD/Margin/Stats/ScorePanel/Margin/Content" unique_id=1259139932]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 2
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=335943497]
+process_mode = 3
+layer = 20
+script = ExtResource("4_pause_menu")
+
+[node name="PauseOverlay" type="Control" parent="PauseMenu" unique_id=1445354708]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dimmer" type="ColorRect" parent="PauseMenu/PauseOverlay" unique_id=610685775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.00392157, 0.0156863, 0.0196078, 0.72)
+
+[node name="Center" type="CenterContainer" parent="PauseMenu/PauseOverlay" unique_id=282496248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="PauseMenu/PauseOverlay/Center" unique_id=1440403081]
+custom_minimum_size = Vector2(390, 390)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_pause_panel")
+
+[node name="Margin" type="MarginContainer" parent="PauseMenu/PauseOverlay/Center/Panel" unique_id=1393486711]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 38
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 38
+
+[node name="Content" type="VBoxContainer" parent="PauseMenu/PauseOverlay/Center/Panel/Margin" unique_id=1048458680]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Eyebrow" type="Label" parent="PauseMenu/PauseOverlay/Center/Panel/Margin/Content" unique_id=1956223799]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.431373, 0.952941, 0.713726, 1)
+theme_override_font_sizes/font_size = 12
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="PauseMenu/PauseOverlay/Center/Panel/Margin/Content" unique_id=485998640]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
+theme_override_font_sizes/font_size = 38
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="PauseMenu/PauseOverlay/Center/Panel/Margin/Content" unique_id=907791730]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="PauseMenu/PauseOverlay/Center/Panel/Margin/Content" unique_id=1511020944]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBox_pause_button")
+theme_override_styles/hover = SubResource("StyleBox_pause_button_hover")
+theme_override_styles/focus = SubResource("StyleBox_pause_button_hover")
+text = "CONTINUE"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/PauseOverlay/Center/Panel/Margin/Content" unique_id=463076771]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBox_pause_button")
+theme_override_styles/hover = SubResource("StyleBox_pause_button_hover")
+theme_override_styles/focus = SubResource("StyleBox_pause_button_hover")
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/PauseOverlay/Center/Panel/Margin/Content" unique_id=719181940]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBox_pause_button")
+theme_override_styles/hover = SubResource("StyleBox_pause_button_hover")
+theme_override_styles/focus = SubResource("StyleBox_pause_button_hover")
+text = "QUIT"
+
+[node name="Hint" type="Label" parent="PauseMenu/PauseOverlay/Center/Panel/Margin/Content" unique_id=233329754]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.403922, 0.603922, 0.545098, 1)
+theme_override_font_sizes/font_size = 11
+text = "ESC TO CONTINUE"
+horizontal_alignment = 1
+
+[node name="PauseSound" type="AudioStreamPlayer" parent="PauseMenu" unique_id=1831426791]
+unique_name_in_owner = true
+stream = ExtResource("5_pause_sfx")
+bus = &"SFX"
+
+[node name="ContinueSound" type="AudioStreamPlayer" parent="PauseMenu" unique_id=862139080]
+unique_name_in_owner = true
+stream = ExtResource("6_continue_sfx")
+bus = &"SFX"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=792514065]
+transform = Transform3D(1, 0, 0, 0, 0.43535468, 0.9002591, 0, -0.9002591, 0.43535468, 0, 2.5357144, 0.9345654)
+
+[node name="PlaceholderGems" type="Node3D" parent="." unique_id=1276421197]
+
+[node name="Node3D" parent="PlaceholderGems" unique_id=814057494 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0)
+
+[node name="Node3D2" parent="PlaceholderGems" unique_id=57831395 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -1.0356641, 0, 0.0024537444)
+
+[node name="Node3D8" parent="PlaceholderGems" unique_id=1601298269 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -1.5514104, 0, 0.0024537444)
+
+[node name="Node3D3" parent="PlaceholderGems" unique_id=458947154 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -0.26091838, 0, -0.44556826)
+
+[node name="Node3D4" parent="PlaceholderGems" unique_id=120728231 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 0, 0, -0.88912934)
+
+[node name="Node3D5" parent="PlaceholderGems" unique_id=907711163 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 0.25891137, 0, -1.3346977)
+
+[node name="Node3D6" parent="PlaceholderGems" unique_id=1031934277 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -0.26091838, 0, -1.3346977)
+
+[node name="Node3D7" parent="PlaceholderGems" unique_id=285912870 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 0.77740157, 0, -0.4430554)
+
+[node name="Node3D9" parent="PlaceholderGems" unique_id=498084553 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 0.5164832, 0, -0.8886238)
+
+[node name="Node3D10" parent="PlaceholderGems" unique_id=355209151 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -0.7763039, 0, -0.4430554)
+
+[node name="Node3D19" parent="PlaceholderGems" unique_id=193317716 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 0.25789356, 0, 0.43641222)
+
+[node name="Node3D20" parent="PlaceholderGems" unique_id=1497079363 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -0.25749195, 0, 0.4389251)
+
+[node name="Node3D11" parent="PlaceholderGems" unique_id=451941067 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -0.5173925, 0, -0.8886238)
+
+[node name="Node3D14" parent="PlaceholderGems" unique_id=232999371 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, -0.5173925, 0, -0.0039126873)
+
+[node name="Node3D12" parent="PlaceholderGems" unique_id=248092847 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 1.5508816, 0, -0.8883808)
+
+[node name="Node3D13" parent="PlaceholderGems" unique_id=333874893 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 1.0351353, 0, -0.8883808)
+
+[node name="Node3D15" parent="PlaceholderGems" unique_id=86600405 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 2.3256273, 0, -1.3364029)
+
+[node name="Node3D16" parent="PlaceholderGems" unique_id=933960458 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 2.0691533, 0, -0.89474726)
+
+[node name="Node3D18" parent="PlaceholderGems" unique_id=1684459511 instance=ExtResource("1_elqb8")]
+transform = Transform3D(0.2966839, 0, 0, 0, 0.2966839, 0, 0, 0, 0.2966839, 0.5174931, 0, -0.0039126873)
+
+[node name="MainBgm2" type="AudioStreamPlayer3D" parent="." unique_id=740678027]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09333879, -2.3841858e-07, -2.5089698)
+stream = ExtResource("3_0bbpv")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="PauseMenu/PauseOverlay/Center/Panel/Margin/Content/ContinueButton" to="PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseOverlay/Center/Panel/Margin/Content/RestartButton" to="PauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseOverlay/Center/Panel/Margin/Content/QuitButton" to="PauseMenu" method="_on_quit_pressed"]
