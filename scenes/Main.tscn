@@ -115,7 +115,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_colors/font_color = Color(0.431373, 0.952941, 0.713726, 1)
 theme_override_font_sizes/font_size = 10
-text = "CURRENT LEVEL  [A]"
+text = "CURRENT LEVEL"
 
 [node name="LevelLabel" type="Label" parent="HUD/Margin/Stats/LevelPanel/Margin/Content" unique_id=501486678]
 unique_name_in_owner = true
@@ -152,7 +152,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_colors/font_color = Color(0.431373, 0.952941, 0.713726, 1)
 theme_override_font_sizes/font_size = 10
-text = "SCORE  [S]"
+text = "SCORE"
 horizontal_alignment = 2
 
 [node name="ScoreLabel" type="Label" parent="HUD/Margin/Stats/ScorePanel/Margin/Content" unique_id=1259139932]
