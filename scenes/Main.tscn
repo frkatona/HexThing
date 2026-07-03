@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cocyxpikdmmsr" path="res://scenes/hexGem.tscn" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://b363hu1xesbk3" path="res://scripts/main.gd" id="2_main"]
 [ext_resource type="AudioStream" uid="uid://bw5aajkhpq1oc" path="res://assets/audio/music/mainBGM.wav" id="3_0bbpv"]
+[ext_resource type="Texture2D" uid="uid://cn8moehdwaogo" path="res://assets/sprites/potion_blue.png" id="3_wp0k4"]
+[ext_resource type="Texture2D" uid="uid://cpd8bnu0rena5" path="res://assets/sprites/sword_bronze.png" id="4_bjd11"]
 [ext_resource type="Script" uid="uid://cs7xdg12nx42v" path="res://scripts/pause_menu.gd" id="4_pause_menu"]
 [ext_resource type="AudioStream" uid="uid://bnw4wys2x0t3i" path="res://assets/audio/sfx/press-pause.mp3" id="5_pause_sfx"]
 [ext_resource type="AudioStream" uid="uid://b01ajv3p4kd5s" path="res://assets/audio/sfx/press-start.mp3" id="6_continue_sfx"]
@@ -136,6 +138,12 @@ theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
 theme_override_font_sizes/font_size = 22
 text = "1"
 
+[node name="SwordBronze" type="Sprite2D" parent="HUD/Margin/Stats/LevelPanel" unique_id=1012759434]
+position = Vector2(108, 38)
+rotation = -1.5707964
+scale = Vector2(0.9666382, 0.9666382)
+texture = ExtResource("4_bjd11")
+
 [node name="Spacer" type="Control" parent="HUD/Margin/Stats" unique_id=442200360]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -174,6 +182,18 @@ theme_override_colors/font_color = Color(0.901961, 1, 0.945098, 1)
 theme_override_font_sizes/font_size = 22
 text = "0"
 horizontal_alignment = 2
+
+[node name="PotionBlue" type="Sprite2D" parent="HUD/Margin/Stats/ScorePanel" unique_id=606880683]
+z_index = 100
+position = Vector2(40.76764, 32.76764)
+scale = Vector2(0.43386936, 0.43386936)
+texture = ExtResource("3_wp0k4")
+
+[node name="PotionBlue2" type="Sprite2D" parent="HUD/Margin/Stats/ScorePanel" unique_id=253378682]
+z_index = 100
+position = Vector2(87.76758, 32.76764)
+scale = Vector2(0.43386936, 0.43386936)
+texture = ExtResource("3_wp0k4")
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=335943497]
 process_mode = 3
@@ -297,7 +317,7 @@ stream = ExtResource("6_continue_sfx")
 bus = &"SFX"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=792514065]
-transform = Transform3D(1, 0, 0, 0, 0.5520591, 0.83380497, 0, -0.83380497, 0.5520591, 0, 6.1311026, 3.4646466)
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 3.954, 3.081)
 
 [node name="PlaceholderGems" type="Node3D" parent="." unique_id=1276421197]
 
@@ -381,23 +401,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36348033, -0.25862432, 0)
 
 [node name="pillars" type="Node3D" parent="Room" unique_id=1586843203]
 
-[node name="pillar" parent="Room/pillars" unique_id=173865628 instance=ExtResource("7_q8u5g")]
-transform = Transform3D(-6.0816423e-09, 0, 0.13913177, 0, 0.13913177, 0, -0.13913177, 0, -6.0816423e-09, -3.451131, 1.0890461, 1.6434953)
-
 [node name="pillar2" parent="Room/pillars" unique_id=317734727 instance=ExtResource("7_q8u5g")]
-transform = Transform3D(-6.0816423e-09, 0, 0.13913177, 0, 0.13913177, 0, -0.13913177, 0, -6.0816423e-09, -3.451131, 1.0890461, -0.35650468)
+transform = Transform3D(-1.1146404e-08, 0, 0.255, 0, 0.23645295, 0, -0.255, 0, -1.1146404e-08, -4.8503766, 1.6849581, -3.1093373)
 
-[node name="pillar3" parent="Room/pillars" unique_id=1951041691 instance=ExtResource("7_q8u5g")]
-transform = Transform3D(-6.0816423e-09, 0, 0.13913177, 0, 0.13913177, 0, -0.13913177, 0, -6.0816423e-09, -3.451131, 1.0890461, -2.3565047)
+[node name="pillar4" parent="Room/pillars" unique_id=173865628 instance=ExtResource("7_q8u5g")]
+transform = Transform3D(-1.1146404e-08, 0, 0.255, 0, 0.23645295, 0, -0.255, 0, -1.1146404e-08, -4.8503766, 1.6849581, 2.2456627)
 
-[node name="pillar4" parent="Room/pillars" unique_id=1702630826 instance=ExtResource("7_q8u5g")]
-transform = Transform3D(1.8244927e-08, 0, -0.13913177, 0, 0.13913177, 0, 0.13913177, 0, 1.8244927e-08, 2.2315884, 1.0890461, -2.3565047)
+[node name="pillar5" parent="Room/pillars" unique_id=1069577513 instance=ExtResource("7_q8u5g")]
+transform = Transform3D(3.343921e-08, 0, -0.255, 0, 0.23645295, 0, 0.255, 0, 3.343921e-08, 3.5872169, 1.6849581, 2.2456622)
 
-[node name="pillar5" parent="Room/pillars" unique_id=890576091 instance=ExtResource("7_q8u5g")]
-transform = Transform3D(1.8244927e-08, 0, -0.13913177, 0, 0.13913177, 0, 0.13913177, 0, 1.8244927e-08, 2.2315886, 1.0890461, -0.35650468)
-
-[node name="pillar6" parent="Room/pillars" unique_id=1969819333 instance=ExtResource("7_q8u5g")]
-transform = Transform3D(1.8244927e-08, 0, -0.13913177, 0, 0.13913177, 0, 0.13913177, 0, 1.8244927e-08, 2.2315888, 1.0890461, 1.6434953)
+[node name="pillar3" parent="Room/pillars" unique_id=556773932 instance=ExtResource("7_q8u5g")]
+transform = Transform3D(-1.1146404e-08, 0, -0.255, 0, 0.23645295, 0, 0.255, 0, -1.1146404e-08, 3.682513, 1.6849581, -3.0389898)
 
 [node name="floor" type="Node3D" parent="Room" unique_id=553761068]
 
@@ -429,16 +443,19 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.2841625, 0.094994545
 transform = Transform3D(1, 0, 0, 0, 1.21, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="wall" parent="Room/walls" unique_id=1814467421 instance=ExtResource("9_q8u5g")]
-transform = Transform3D(0.20442237, 0, -4.2632566e-15, 0, 0.20442237, 0, 4.2632566e-15, 0, 0.20442237, 2.0014179, -0.049691945, -3.5884776)
+transform = Transform3D(0.20427439, -0.00019058111, -0.007774565, -0.00010986774, 0.20426984, -0.007894093, 0.0077761244, 0.007892557, 0.20412186, 1.5056682, -0.050141722, -3.5778084)
 
 [node name="wall4" parent="Room/walls" unique_id=1805858833 instance=ExtResource("9_q8u5g")]
-transform = Transform3D(0.20442237, 0, -4.2632566e-15, 0, 0.20442237, 0, 4.2632566e-15, 0, 0.20442237, -3.233725, -0.049691945, -3.5884776)
+transform = Transform3D(0.16333266, 0, -4.2632566e-15, 0, 0.20442237, 0, 3.4063248e-15, 0, 0.20442237, -2.1213524, -0.049691945, -3.5884776)
+
+[node name="wall7" parent="Room/walls" unique_id=920768400 instance=ExtResource("9_q8u5g")]
+transform = Transform3D(0.16333266, 0, -4.2632566e-15, 0, 0.20442237, 0, 3.4063248e-15, 0, 0.20442237, -5.634659, -0.049691945, -3.5884776)
 
 [node name="wall2" parent="Room/walls" unique_id=226248269 instance=ExtResource("9_q8u5g")]
-transform = Transform3D(2.6806756e-08, 1.7871171e-08, -0.20442237, 0, -0.20442237, -1.7871171e-08, -0.20442237, 2.343521e-15, -2.6806756e-08, 4.687434, 3.1256304, -1.0796324)
+transform = Transform3D(2.6806756e-08, 1.7871171e-08, -0.20442237, 0, -0.20442237, -1.7871171e-08, -0.20442237, 2.343521e-15, -2.6806756e-08, 3.9658177, 3.1256304, -1.0796325)
 
 [node name="wall6" parent="Room/walls" unique_id=116355679 instance=ExtResource("9_q8u5g")]
-transform = Transform3D(2.6806756e-08, 1.7871171e-08, -0.20442237, 0, -0.20442237, -1.7871171e-08, -0.20442237, 2.343521e-15, -2.6806756e-08, 4.6874332, 3.1256304, 3.2132373)
+transform = Transform3D(2.6806756e-08, 1.7871171e-08, -0.20442237, 0, -0.20442237, -1.7871171e-08, -0.20442237, 2.343521e-15, -2.6806756e-08, 3.9471467, 3.1256304, 3.2132373)
 
 [node name="wall3" parent="Room/walls" unique_id=1122778447 instance=ExtResource("9_q8u5g")]
 transform = Transform3D(2.6806756e-08, 0, 0.20442237, 0, 0.20442237, 0, -0.20442237, 0, 2.6806756e-08, -5.292927, -0.049691945, -1.079633)

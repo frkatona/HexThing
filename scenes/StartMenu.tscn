@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://daqjuipm1o1ex" path="res://assets/sprites/gemSprite-2.png" id="3_cuvp2"]
 [ext_resource type="Texture2D" uid="uid://cabyvgmgq6e5b" path="res://assets/sprites/gemSprite-3.png" id="4_frkif"]
 [ext_resource type="Texture2D" uid="uid://w1q4usry7rfr" path="res://assets/sprites/gemSprite-4.png" id="5_sf8pk"]
+[ext_resource type="Texture2D" uid="uid://iwpahjejyp5r" path="res://assets/sprites/sword_silver.png" id="6_aso40"]
+[ext_resource type="Texture2D" uid="uid://6laag8a2tija" path="res://assets/sprites/shield.png" id="7_cuvp2"]
 
 [sub_resource type="Gradient" id="Gradient_background"]
 offsets = PackedFloat32Array(0, 0.55, 1)
@@ -274,7 +276,22 @@ theme_override_styles/pressed = SubResource("Style_button_pressed")
 theme_override_styles/hover = SubResource("Style_button_hover")
 text = "START"
 
+[node name="SwordSilver" type="Sprite2D" parent="Center/MenuPanel/Margin/Content/StartButton" unique_id=1643483700]
+z_as_relative = false
+position = Vector2(305, 27)
+rotation = 1.5707964
+scale = Vector2(0.94293976, 0.94293976)
+texture = ExtResource("6_aso40")
+
+[node name="SwordSilver2" type="Sprite2D" parent="Center/MenuPanel/Margin/Content/StartButton" unique_id=2041482269]
+z_as_relative = false
+position = Vector2(83, 27)
+rotation = -1.5707964
+scale = Vector2(0.94293976, 0.94293976)
+texture = ExtResource("6_aso40")
+
 [node name="QuitButton" type="Button" parent="Center/MenuPanel/Margin/Content" unique_id=2106466946]
+z_index = 2
 custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
@@ -286,6 +303,12 @@ theme_override_styles/normal = SubResource("Style_button_secondary")
 theme_override_styles/pressed = SubResource("Style_button_pressed")
 theme_override_styles/hover = SubResource("Style_button")
 text = "QUIT"
+
+[node name="Shield" type="Sprite2D" parent="Center/MenuPanel/Margin/Content/QuitButton" unique_id=483176454]
+z_index = -1
+position = Vector2(195, 23)
+scale = Vector2(0.3251816, 0.3242723)
+texture = ExtResource("7_cuvp2")
 
 [node name="Hint" type="Label" parent="Center/MenuPanel/Margin/Content" unique_id=1173171430]
 visible = false
